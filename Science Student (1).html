@@ -1,0 +1,327 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Science Student</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Layout: página única minimalista com cabeçalho, apresentação curta e três abas (Exemplos, Crie seu site, Contato). Os desenhos de sites nos exemplos usam cores próprias, como se fossem imagens. */
+:root{
+  --bg:#FFFFFF; --fg:#0A0A0B; --muted:#6B6B72; --line:#E6E6E9; --soft:#F5F5F6;
+  --accent:#2F5BFF; --accent-fg:#FFFFFF;
+  --display:'Sora','Helvetica Neue',Arial,sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#09090B; --fg:#F4F4F5; --muted:#9A9AA3; --line:#232327; --soft:#131316;
+    --accent:#7B9BFF; --accent-fg:#09090B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#09090B; --fg:#F4F4F5; --muted:#9A9AA3; --line:#232327; --soft:#131316;
+  --accent:#7B9BFF; --accent-fg:#09090B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-block:18px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4,p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+
+/* topo */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand svg{flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);font:600 16px var(--body);text-decoration:none;cursor:pointer;transition:opacity .2s ease,background-color .2s ease,border-color .2s ease}
+.btn:hover{opacity:.86}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--fg);opacity:1}
+.btn.small{min-height:38px;padding:0 16px;font-size:14px}
+
+/* apresentação */
+.intro{display:flex;flex-direction:column;gap:16px;padding-top:12px}
+.intro h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,10.5vw,68px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance;max-width:14ch}
+.intro h1 em{font-style:normal;color:var(--accent)}
+.intro p{color:var(--muted);font-size:18px;max-width:44ch}
+
+/* abas */
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:12px 0;margin-bottom:-1px;cursor:pointer;color:var(--muted);font:600 15px var(--body);white-space:nowrap;transition:color .2s ease,border-color .2s ease}
+.tab:hover{color:var(--fg)}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.panel{display:flex;flex-direction:column;gap:28px;animation:fade .5s cubic-bezier(.22,.61,.36,1) both}
+.panel[hidden]{display:none}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.lede{color:var(--muted);max-width:52ch}
+
+/* exemplos */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:34px 24px}
+.card{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cap{display:flex;flex-direction:column;gap:4px}
+.cap .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cap h3{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
+.tag{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.tag.real{border-color:var(--accent);color:var(--accent)}
+.cap p{color:var(--muted);font-size:15px}
+
+.shot{position:relative;container-type:inline-size;aspect-ratio:16/10;overflow:hidden;border-radius:12px;border:1px solid var(--line);font-family:var(--body)}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;padding:4cqw 5cqw;gap:3cqw}
+.shot h4{font-family:var(--display)}
+.nav{display:flex;align-items:center;gap:3cqw;font-size:2.2cqw}
+.nav b{margin-right:auto;font-family:var(--display);font-size:3.2cqw}
+.hero{flex:1;display:flex;align-items:center;justify-content:space-between;min-height:0}
+.hero h4{font-size:6.4cqw;line-height:1.05;letter-spacing:-.02em;font-weight:700}
+.hero p{margin:1.6cqw 0 2.4cqw;font-size:2.3cqw;opacity:.8}
+.cta{display:inline-block;font-style:normal;font-weight:600;font-size:2.2cqw;padding:1.4cqw 3cqw;border-radius:99cqw}
+.menu{display:flex;justify-content:space-between;gap:2cqw;font-size:2cqw;padding-top:2cqw;border-top:1px solid rgba(128,128,128,.3)}
+.menu b{font-weight:600}
+
+/* Monta Treino: dois celulares */
+.sa{background:#EDEDF0}
+.phones{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:5cqw}
+.ph{width:25cqw;height:52cqw;background:#fff;color:#0B0B0C;border:.7cqw solid #0B0B0C;border-radius:4cqw;padding:3.2cqw 2.6cqw;display:flex;flex-direction:column;gap:1.8cqw;overflow:hidden}
+.ph .lg{font-family:var(--display);font-weight:700;font-size:1.9cqw}
+.ph h5{margin:0;font-family:var(--display);font-weight:700;font-size:3.7cqw;line-height:1.05;letter-spacing:-.03em}
+.ph h5 em{font-style:normal;color:#FF4A1C}
+.ph .wl{font-family:var(--display);font-weight:600;font-size:2.4cqw}
+.ph .inp{height:3.6cqw;border:.2cqw solid #D8D8DC;border-radius:1cqw;font-size:1.6cqw;color:#9A9AA0;display:flex;align-items:center;padding-left:1.2cqw}
+.ph .pill{height:4.2cqw;border-radius:99cqw;background:#0B0B0C;color:#fff;font-size:1.9cqw;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:.4cqw}
+.ph .hi{font-family:var(--display);font-weight:600;font-size:2.3cqw}
+.ph .tb{display:flex;gap:2cqw;font-size:1.7cqw;color:#8A8A90;border-bottom:.2cqw solid #E6E6E9;padding-bottom:1cqw}
+.ph .tb b{color:#0B0B0C;font-weight:600;border-bottom:.35cqw solid #FF4A1C;padding-bottom:.9cqw;margin-bottom:-1.1cqw}
+.ph .dy{font-size:1.7cqw;color:#FF4A1C;font-family:var(--mono)}
+.ph .dy span{color:#0B0B0C;font-family:var(--display);font-weight:600;margin-left:1cqw;font-size:2cqw}
+.ph .ex{display:flex;justify-content:space-between;font-size:1.6cqw;border-top:.2cqw solid #E6E6E9;padding-top:1.2cqw}
+.ph .ex i{font-style:normal;font-family:var(--mono);font-size:1.5cqw}
+
+/* lanchonete */
+.sb{background:#14301F;color:#EDE9DD}
+.sb .cta{background:#F2A33A;color:#14301F}
+.burger{display:flex;flex-direction:column;gap:.5cqw;width:24cqw}
+.burger u{display:block;text-decoration:none}
+.burger u:nth-child(1){height:7cqw;border-radius:12cqw 12cqw 1.5cqw 1.5cqw;background:#E4A04A}
+.burger u:nth-child(2){height:1.6cqw;background:#F6D55C;border-radius:.8cqw}
+.burger u:nth-child(3){height:4.2cqw;background:#5A2E1B;border-radius:2cqw}
+.burger u:nth-child(4){height:3.6cqw;background:#D9923A;border-radius:1.5cqw 1.5cqw 5cqw 5cqw}
+
+/* barbearia */
+.sc{background:#0E0E0F;color:#fff}
+.sc .nav b{letter-spacing:.2em;text-transform:uppercase;font-size:2.6cqw}
+.sc .cta{background:#E23B3B;color:#fff}
+.pole{width:7cqw;height:30cqw;border-radius:3.5cqw;border:.8cqw solid #3A3A3D;background:repeating-linear-gradient(135deg,#E23B3B 0 3cqw,#fff 3cqw 6cqw)}
+
+/* loja */
+.sd{background:#F4F4F2;color:#18181B}
+.sd h4{font-size:5cqw;letter-spacing:-.02em;font-weight:700}
+.tiles{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw;min-height:0}
+.tiles div{border-radius:1.6cqw;display:flex;align-items:flex-end;padding:1.6cqw;font-size:1.9cqw;line-height:1.25}
+.tiles b{font-weight:600}
+
+/* planos */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.plan{border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.plan .nm{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.plan .pr{font-family:var(--display);font-weight:700;font-size:44px;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.plan p{color:var(--muted);font-size:15px;flex:1}
+.plan .btn{width:100%}
+
+/* contato */
+.contact{display:flex;flex-direction:column;gap:20px;max-width:460px}
+.num{font-family:var(--display);font-weight:700;font-size:clamp(30px,9vw,44px);letter-spacing:-.03em;line-height:1.1;user-select:all;overflow-wrap:anywhere}
+.cbtns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.copied{font-size:14px;color:var(--muted)}
+.foot{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+
+@media (prefers-reduced-motion:reduce){.panel{animation:none}.btn,.tab{transition:none}}
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <span class="brand">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="26" height="15" rx="2"/><path d="M3 13l2.5-7 21 -2 2.5 6" /><path d="M9 6l3 7M16 5l3 8M23 4l3 9"/></svg>
+      Science Student
+    </span>
+    <a class="btn ghost small" href="https://wa.me/556581386725" target="_blank" rel="noopener">WhatsApp</a>
+  </header>
+
+  <section class="intro">
+    <h1>Seu site, <em>pronto</em> para vender.</h1>
+    <p>Criamos sites simples, médios e profissionais para o seu negócio. Veja exemplos e escolha o seu.</p>
+  </section>
+
+  <div>
+    <div class="tabs" role="tablist" aria-label="Seções">
+      <button class="tab" role="tab" id="t-exemplos" aria-controls="p-exemplos" aria-selected="true" type="button">Exemplos</button>
+      <button class="tab" role="tab" id="t-crie-seu-site" aria-controls="p-crie-seu-site" aria-selected="false" type="button">Crie seu site</button>
+      <button class="tab" role="tab" id="t-contato" aria-controls="p-contato" aria-selected="false" type="button">Contato</button>
+    </div>
+  </div>
+
+  <!-- EXEMPLOS -->
+  <section class="panel" id="p-exemplos" role="tabpanel" aria-labelledby="t-exemplos">
+    <p class="lede">Cada site é feito do zero para o seu negócio. Os modelos abaixo mostram o estilo de cada tipo de site.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="shot sa" role="img" aria-label="Duas telas de celular do app Monta Treino: a tela de entrada e a lista de treino da semana">
+          <div class="phones">
+            <div class="ph">
+              <span class="lg">Monta Treino</span>
+              <h5>Seu treino,<br><em>do seu jeito.</em></h5>
+              <span class="wl">Bem-vindo</span>
+              <div class="inp">Nome</div>
+              <div class="inp">Senha</div>
+              <div class="pill">Continuar</div>
+            </div>
+            <div class="ph">
+              <span class="hi">Olá, Ana</span>
+              <div class="tb"><b>Treino</b><span>Corpo</span><span>Professores</span></div>
+              <div class="dy">SEG<span>Peito e ombro</span></div>
+              <div class="ex">Supino inclinado<i>4 × 6-10</i></div>
+              <div class="ex">Elevação lateral<i>3 × 12-15</i></div>
+              <div class="ex">Tríceps na corda<i>3 × 10-15</i></div>
+              <div class="ex">Crucifixo no cabo<i>3 × 12-15</i></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">
+          <div class="row"><h3>Monta Treino</h3><span class="tag real">Projeto</span></div>
+          <p>App que monta o treino da semana a partir da idade, do peso, da altura e do objetivo, com professores virtuais.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="shot sb" role="img" aria-label="Modelo de site para lanchonete, com chamada, hambúrguer ilustrado, preços e botão para pedir no WhatsApp">
+          <div class="scr">
+            <div class="nav"><b>Brasa</b><span>Cardápio</span><span>Contato</span></div>
+            <div class="hero">
+              <div><h4>Hambúrguer<br>de verdade.</h4><p>Artesanal, feito na hora.</p><i class="cta">Pedir no WhatsApp</i></div>
+              <div class="burger" aria-hidden="true"><u></u><u></u><u></u><u></u></div>
+            </div>
+            <div class="menu"><span>Clássico <b>R$ 22</b></span><span>Duplo <b>R$ 28</b></span><span>Batata <b>R$ 14</b></span></div>
+          </div>
+        </div>
+        <div class="cap">
+          <div class="row"><h3>Lanchonete</h3><span class="tag">Modelo</span></div>
+          <p>Cardápio com preços e botão de pedido direto no WhatsApp.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="shot sc" role="img" aria-label="Modelo de site para barbearia, com chamada, lista de serviços com preços e botão de agendamento">
+          <div class="scr">
+            <div class="nav"><b>Corte Fino</b><span>Serviços</span><span>Agendar</span></div>
+            <div class="hero">
+              <div><h4>Estilo em<br>cada corte.</h4><p>Horário marcado, sem espera.</p><i class="cta">Agendar horário</i></div>
+              <div class="pole" aria-hidden="true"></div>
+            </div>
+            <div class="menu"><span>Corte <b>R$ 35</b></span><span>Barba <b>R$ 25</b></span><span>Combo <b>R$ 55</b></span></div>
+          </div>
+        </div>
+        <div class="cap">
+          <div class="row"><h3>Barbearia</h3><span class="tag">Modelo</span></div>
+          <p>Serviços, preços e agendamento em uma página só.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="shot sd" role="img" aria-label="Modelo de site para loja de roupas, com vitrine de quatro produtos e preços">
+          <div class="scr">
+            <div class="nav"><b>lume</b><span>Novidades</span><span>Contato</span></div>
+            <h4>Novidades da semana</h4>
+            <div class="tiles">
+              <div style="background:#C9D6FF"><span>Vestido<br><b>R$ 129</b></span></div>
+              <div style="background:#FFD9C9"><span>Blusa<br><b>R$ 69</b></span></div>
+              <div style="background:#D5F0D8"><span>Calça<br><b>R$ 119</b></span></div>
+              <div style="background:#EBD5F5"><span>Saia<br><b>R$ 89</b></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">
+          <div class="row"><h3>Loja de roupas</h3><span class="tag">Modelo</span></div>
+          <p>Vitrine de produtos com preço e contato para comprar.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CRIE SEU SITE -->
+  <section class="panel" id="p-crie-seu-site" role="tabpanel" aria-labelledby="t-crie-seu-site" hidden>
+    <p class="lede">Escolha o tamanho do site. Toque em pedir e conte o que você precisa pelo WhatsApp.</p>
+    <div class="plans">
+      <article class="plan">
+        <span class="nm">Site simples</span>
+        <span class="pr">R$ 20</span>
+        <p>Uma página com o nome do seu negócio, uma apresentação e o botão de contato.</p>
+        <a class="btn ghost" href="https://wa.me/556581386725?text=Ol%C3%A1!%20Quero%20um%20site%20simples%20(R%24%2020)." target="_blank" rel="noopener">Pedir site simples</a>
+      </article>
+      <article class="plan">
+        <span class="nm">Site médio</span>
+        <span class="pr">R$ 100</span>
+        <p>Um site com várias seções, como serviços, preços e fotos, com botão de WhatsApp.</p>
+        <a class="btn ghost" href="https://wa.me/556581386725?text=Ol%C3%A1!%20Quero%20um%20site%20m%C3%A9dio%20(R%24%20100)." target="_blank" rel="noopener">Pedir site médio</a>
+      </article>
+      <article class="plan">
+        <span class="nm">Site profissional</span>
+        <span class="pr">R$ 220</span>
+        <p>Um site completo, com design feito sob medida para a sua marca e acabamento mais elaborado.</p>
+        <a class="btn" href="https://wa.me/556581386725?text=Ol%C3%A1!%20Quero%20um%20site%20profissional%20(R%24%20220)." target="_blank" rel="noopener">Pedir site profissional</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="panel" id="p-contato" role="tabpanel" aria-labelledby="t-contato" hidden>
+    <div class="contact">
+      <p class="lede">Chame no WhatsApp, conte o que o seu negócio precisa e escolha o site ideal.</p>
+      <span class="num" id="num">+55 65 8138-6725</span>
+      <div class="cbtns">
+        <a class="btn" href="https://wa.me/556581386725" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <button class="btn ghost" id="copyNum" type="button">Copiar número</button>
+        <span class="copied" id="copied" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Science Student · Criação de sites</p>
+</div>
+
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var NAMES=['exemplos','crie-seu-site','contato'];
+function show(name){
+  if(NAMES.indexOf(name)<0)name='exemplos';
+  NAMES.forEach(function(n){
+    $('p-'+n).hidden=(n!==name);
+    $('t-'+n).setAttribute('aria-selected',n===name?'true':'false');
+  });
+}
+NAMES.forEach(function(n){
+  $('t-'+n).addEventListener('click',function(){
+    show(n);
+    try{if(location.hash!=='#'+n)location.hash=n}catch(e){}
+  });
+});
+function fromHash(){show((location.hash||'').replace('#',''))}
+window.addEventListener('hashchange',fromHash);
+fromHash();
+
+$('copyNum').addEventListener('click',function(){
+  var t='+55 65 8138-6725',msg=$('copied');
+  var fb=function(){
+    var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);msg.textContent=ok?'Número copiado.':'Selecione o número na tela para copiar.';
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){msg.textContent='Número copiado.'},fb);else fb();
+});
+})();
+</script>
+
+</body></html>
